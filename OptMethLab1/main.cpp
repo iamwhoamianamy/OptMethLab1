@@ -13,4 +13,7 @@ int main()
    std::cout << bisection_method(-2, 20, EPSILON, f, "reports/bisect.txt");
    std::cout << std::endl;
    std::cout << golden_ratio_method(-2, 20, EPSILON, f, "reports/golden.txt");
+   std::cout << std::endl;
+   std::cout << fibonacсi_method(-2, 20, EPSILON, f, "reports/fibonacci.txt");
+
 }
