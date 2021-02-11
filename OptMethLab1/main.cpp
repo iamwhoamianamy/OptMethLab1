@@ -1,7 +1,7 @@
 ﻿#include <iostream>
-#include "bisection_method.h"
+#include "methodes.h"
 
-const double eps = 10e-7;
+const double EPSILON = 10e-7;
 
 double f(double x)
 {
@@ -10,5 +10,7 @@ double f(double x)
 
 int main()
 {
-   std::cout << bisection_method(-2, 20, eps, f, "reports/bisect.txt");
+   std::cout << bisection_method(-2, 20, EPSILON, f, "reports/bisect.txt");
+   std::cout << std::endl;
+   std::cout << golden_ratio_method(-2, 20, EPSILON, f, "reports/golden.txt");
 }
