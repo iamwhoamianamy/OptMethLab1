@@ -172,3 +172,41 @@ double fibonacñi_method(const double& a0, const double& b0,
    fout.close();
    return a;
 }
+
+void find_segment_with_min(double x0, const double& DELTA,
+   double funct(double), double& a, double& b)
+{
+   int k = 1;
+   double xk, xk1, xk_1, h;
+
+   if(funct(x0) > funct(x0 + DELTA))
+   {
+      xk = x0 + DELTA;
+      h = DELTA;
+   }
+   else if(funct(x0) > funct(x0 - DELTA))
+   {
+      xk = x0 - DELTA;
+      h = -DELTA;
+   }
+
+   xk_1 = x0;
+
+   bool exit = false;
+   do
+   {
+      h *= 2;
+      xk1 = xk + h;
+      
+      if(funct(xk) > funct(xk1))
+      {
+         xk_1 = xk;
+         xk = xk1;
+         k++;
+      }
+      else
+         exit = true;
+   } while(!exit);
+
+   a = xk_1, b = xk1;
+}
