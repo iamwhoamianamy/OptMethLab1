@@ -14,7 +14,7 @@ double golden_ratio_method(double a, double b,
 double calc_fibonacсi(const int& N);
 
 // Вычисление порядкового номера числа Фибоначи из его значения
-int calc_reverse_fibonacсi(const int& F);
+int calc_reverse_fibonacсi(const double& F);
 
 // Функция поиска минимум функции методом Фибоначчи
 double fibonacсi_method(const double& a0, const double& b0,

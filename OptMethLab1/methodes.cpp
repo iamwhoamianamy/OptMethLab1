@@ -116,7 +116,7 @@ double calc_fibonacñi(const int& N)
    return pow((1 + SQRT5) / 2, N) / SQRT5;
 }
 
-int calc_reverse_fibonacñi(const int& F)
+int calc_reverse_fibonacñi(const double& F)
 {
    return round(log(SQRT5 * F) / log((1 + SQRT5) / 2));
 }
@@ -125,7 +125,7 @@ double fibonacñi_method(const double& a0, const double& b0,
    const double& EPS, double funct(double), const std::string& OUT_FILE)
 {
    double a = a0, b = b0;
-   const int N = calc_reverse_fibonacñi(round((b - a) / EPS)) - 2;
+   const int N = calc_reverse_fibonacñi((b - a) / EPS) - 2;
    double x1 = a + calc_fibonacñi(N + 0) / calc_fibonacñi(N + 2) * (b - a);
    double x2 = a + calc_fibonacñi(N + 1) / calc_fibonacñi(N + 2) * (b - a);
    double f1, f2, a1, b1;

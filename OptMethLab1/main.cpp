@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "methodes.h"
 
-const double EPSILON = 10e-7;
+const double EPSILON = 10e-8;
 
 double f(double x)
 {
