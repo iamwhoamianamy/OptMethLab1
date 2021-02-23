@@ -59,7 +59,9 @@ double golden_ratio_method(double a, double b,
 {
    double x1 = a + (3 - SQRT5) / 2 * (b - a);
    double x2 = a + (SQRT5 - 1) / 2 * (b - a);
-   double f1, f2, a1, b1;
+   double f1 = funct(x1);
+   double f2 = funct(x2);
+   double a1, b1;
 
    std::ofstream fout(OUT_FILE);
 
@@ -70,24 +72,26 @@ double golden_ratio_method(double a, double b,
    fout << "            f1            f2";
    fout << "             a             b";
    fout << "         b - a   (b1 - a1) / (b - a)" << std::endl;
-
+   
    int n = 0;
    for(; abs(b - a) > EPS; n++)
    {
-      f1 = funct(x1), f2 = funct(x2);
       a1 = a, b1 = b;
-
       if(f1 < f2)
       {
          b = x2;
          x2 = x1;
          x1 = a + (3 - SQRT5) / 2 * (b - a);
+		 f2 = f1;
+		 f1 = funct(x1);
       }
       else
       {
          a = x1;
          x1 = x2;
          x2 = a + (SQRT5 - 1) / 2 * (b - a);
+		 f1 = f2;
+		 f2 = funct(x2);
       }
 
       //// Âûâîä äëÿ ïðîñìîòðà òàáëèöû â âîðäå
@@ -128,7 +132,9 @@ double fibonacñi_method(const double& a0, const double& b0,
    const int N = calc_reverse_fibonacñi((b - a) / EPS) - 2;
    double x1 = a + calc_fibonacñi(N + 0) / calc_fibonacñi(N + 2) * (b - a);
    double x2 = a + calc_fibonacñi(N + 1) / calc_fibonacñi(N + 2) * (b - a);
-   double f1, f2, a1, b1;
+   double f1 = funct(x1);
+   double f2 = funct(x2);
+   double a1, b1;
 
    std::ofstream fout(OUT_FILE);
 
@@ -141,7 +147,6 @@ double fibonacñi_method(const double& a0, const double& b0,
    int k = 1;
    for(; k <= N; k++)
    {
-      f1 = funct(x1), f2 = funct(x2);
       a1 = a, b1 = b;
 
       if(f1 < f2)
@@ -149,12 +154,16 @@ double fibonacñi_method(const double& a0, const double& b0,
          b = x2;
          x2 = x1;
          x1 = a + calc_fibonacñi(N - k - 1) / calc_fibonacñi(N - k + 1) * (b - a);
+		 f2 = f1;
+		 f1 = funct(x1);
       }
       else
       {
          a = x1;
          x1 = x2;
          x2 = a + calc_fibonacñi(N - k) / calc_fibonacñi(N - k + 1) * (b - a);
+		 f1 = f2;
+		 f2 = funct(x2);
       }
 
       //// Âûâîä äëÿ ïðîñìîòðà òàáëèöû â âîðäå
