@@ -22,4 +22,4 @@ double fibonacсi_method(const double& a0, const double& b0,
 
 // Поиск отрезка, содержащего минимум функции
 void find_segment_with_min(double x0, const double& DELTA,
-   double funct(double), double& a, double& b);
+   double funct(double), const std::string& OUT_FILE);

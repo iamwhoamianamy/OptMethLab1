@@ -178,10 +178,17 @@ double fibonacñi_method(const double& a0, const double& b0,
 }
 
 void find_segment_with_min(double x0, const double& DELTA,
-   double funct(double), double& a, double& b)
+   double funct(double), const std::string& OUT_FILE)
 {
    int k = 1;
    double xk, xk1, xk_1, h;
+
+   std::ofstream fout(OUT_FILE);
+   fout << "    i            xi         f(xi)" << std::endl;
+   fout << std::fixed << std::setw(5) << k;
+   fout << std::scientific;
+   fout << std::setw(14) << x0 << std::setw(14) << funct(x0);
+   fout << std::endl;
 
    if(funct(x0) > funct(x0 + DELTA))
    {
@@ -201,16 +208,22 @@ void find_segment_with_min(double x0, const double& DELTA,
    {
       h *= 2;
       xk1 = xk + h;
-      
+
       if(funct(xk) > funct(xk1))
       {
          xk_1 = xk;
          xk = xk1;
          k++;
+
+		 fout << std::fixed << std::setw(5) << k;
+		 fout << std::scientific;
+		 fout << std::setw(14) << xk << std::setw(14) << funct(xk);
+		 fout << std::endl;
       }
       else
          exit = true;
    } while(!exit);
 
-   a = xk_1, b = xk1;
+   fout << "segment with minimum: [" << xk_1 << ";" << xk1 << "]";
+   fout.close();
 }
