@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "methodes.h"
 
-const double EPSILON = 10e-7;
+const double EPSILON = 1e-4;
 
 double f(double x)
 {
@@ -16,5 +16,5 @@ int main()
    std::cout << std::endl;
    std::cout << fibonacсi_method(-2, 20, EPSILON, f, "reports/fibonacci.txt");
    std::cout << std::endl;
-   find_segment_with_min(-2, EPSILON, f, "reports/segment.txt");
+   find_segment_with_min(2.5, 1, f, "reports/segment.txt");
 }
